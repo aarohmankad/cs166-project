@@ -17,6 +17,7 @@
 -- Book Flight (Aaroh)
 -- INSERT INTO Reservation(cid, fid)
 -- VALUES (1, 1);
+
 -- List # of available seats for a given flight (Benny)
 -- SELECT seats, COUNT(*)
 -- FROM Plane
