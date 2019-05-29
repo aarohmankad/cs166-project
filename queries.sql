@@ -1,0 +1,12 @@
+-- Add Plane (Aaroh)
+-- INSERT INTO Plane(id, make, model, age, seats)
+-- VALUES (1998, 'Airbus', 'A380', 1, 333);
+-- Add Pilot (Benny)
+-- Add Flight (Aaroh)
+
+-- Add Technician (Benny)
+-- Book Flight (Aaroh)
+-- List # of available seats for a given flight (Benny)
+-- List total # of repairs/plane in descending order (Aaroh)
+-- List total # of repairs/year in ascending order (Benny)
+-- Find total # of passengers with a given status (Aaroh)
