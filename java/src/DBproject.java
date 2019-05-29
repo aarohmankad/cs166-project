@@ -324,6 +324,24 @@ public class DBproject{
 	}
 
 	public static void AddPilot(DBproject esql) {//2
+		try{
+       String query = "INSERT INTO Plane(id, fullname, nationality) VALUES (";
+       String input = "";
+
+       System.out.print("\tEnter id: ");
+       input = in.readLine();
+       query += input + ", ";
+       System.out.print("\tEnter fullname: ");
+       input = in.readLine();
+       query += "'" + input + "', ";
+       System.out.print("\tEnter nationality: ");
+       input = in.readLine();
+       query += input + ");";
+
+       esql.executeUpdate(query);
+    }catch(Exception e){
+       System.err.println (e.getMessage());
+    }
 	}
 
 	public static void AddFlight(DBproject esql) {//3
@@ -349,6 +367,21 @@ public class DBproject{
 	}
 
 	public static void AddTechnician(DBproject esql) {//4
+		try{
+       String query = "INSERT INTO Plane(id, full_name) VALUES (";
+       String input = "";
+
+       System.out.print("\tEnter id: ");
+       input = in.readLine();
+       query += input + ", ";
+       System.out.print("\tEnter full_name: ");
+       input = in.readLine();
+       query += input + ");";
+
+       esql.executeUpdate(query);
+    }catch(Exception e){
+       System.err.println (e.getMessage());
+    }
 	}
 
 	public static void BookFlight(DBproject esql) {//5
@@ -385,6 +418,12 @@ public class DBproject{
 
 	public static void ListTotalNumberOfRepairsPerYear(DBproject esql) {//8
 		// Count repairs per year and list them in ascending order
+		try{
+       String query = "SELECT repair_date, COUNT(*) as repairs_year FROM Repairs GROUP BY repair_date ORDER BY repairs_year ASC;";
+       esql.executeQueryAndPrintResult(query);
+    }catch(Exception e){
+       System.err.println (e.getMessage());
+    }
 	}
 	
 	public static void FindPassengersCountWithStatus(DBproject esql) {//9
