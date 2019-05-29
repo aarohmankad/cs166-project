@@ -7,8 +7,8 @@
 -- VALUES (2000, 300, 1, 0, '2014-05-01 16:45', '2014-05-02 00:45', 'TDOBK', 'JALYJ');
 -- Add Technician (Benny)
 -- Book Flight (Aaroh)
--- INSERT INTO Reservation(rnum, cid, fid, status)
--- VALUES (9999, 1, 1, 'R');
+-- INSERT INTO Reservation(rnum, cid, fid)
+-- VALUES (9999, 1, 1);
 -- List # of available seats for a given flight (Benny)
 -- List total # of repairs/plane in descending order (Aaroh)
 -- SELECT plane_id, COUNT(*) as repairs

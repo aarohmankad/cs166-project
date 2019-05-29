@@ -300,6 +300,27 @@ public class DBproject{
 	}//end readChoice
 
 	public static void AddPlane(DBproject esql) {//1
+		try{
+       String query = "INSERT INTO Plane(id, make, model, age, seats) VALUES (";
+       String input = "";
+
+       System.out.print("\tEnter make: ");
+       input = in.readLine();
+       query += input + ", ";
+       System.out.print("\tEnter model: ");
+       input = in.readLine();
+       query += input + ", ";
+       System.out.print("\tEnter age: ");
+       input = in.readLine();
+       query += input + ", ";
+       System.out.print("\tEnter seats: ");
+       input = in.readLine();
+       query += input + ");";
+
+       esql.executeUpdate(query);
+    }catch(Exception e){
+       System.err.println (e.getMessage());
+    }
 	}
 
 	public static void AddPilot(DBproject esql) {//2
