@@ -19,9 +19,10 @@
 -- VALUES (1, 1);
 
 -- List # of available seats for a given flight (Benny)
--- SELECT seats, COUNT(*)
--- FROM Plane
--- GROUP BY seats
+SELECT P.seats - F.num_sold
+FROM Plane P, Flight F, FlightInfo FI
+WHERE FI.flight_id=F.fnum AND FI.plane_id=P.id
+GROUP BY P.seats
 
 -- List total # of repairs/plane in descending order (Aaroh)
 -- SELECT plane_id, COUNT(*) AS repairs
