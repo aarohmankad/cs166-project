@@ -301,15 +301,15 @@ public class DBproject{
 
 	public static void AddPlane(DBproject esql) {//1
 		try{
-       String query = "INSERT INTO Plane(id, make, model, age, seats) VALUES (";
+       String query = "INSERT INTO Plane(make, model, age, seats) VALUES (";
        String input = "";
 
        System.out.print("\tEnter make: ");
        input = in.readLine();
-       query += input + ", ";
+       query += "'" + input + "', ";
        System.out.print("\tEnter model: ");
        input = in.readLine();
-       query += input + ", ";
+       query += "'" + input + "', ";
        System.out.print("\tEnter age: ");
        input = in.readLine();
        query += input + ", ";
@@ -328,13 +328,45 @@ public class DBproject{
 
 	public static void AddFlight(DBproject esql) {//3
 		// Given a pilot, plane and flight, adds a flight in the DB
+		try{
+       String query = "INSERT INTO FlightInfo(flight_id, pilot_id, plane_id) VALUES (";
+       String input = "";
+
+       System.out.print("\tEnter flight_id: ");
+       input = in.readLine();
+       query += input + ", ";
+       System.out.print("\tEnter pilot_id: ");
+       input = in.readLine();
+       query += input + ", ";
+       System.out.print("\tEnter plane_id: ");
+       input = in.readLine();
+       query += input + ");";
+
+       esql.executeUpdate(query);
+    }catch(Exception e){
+       System.err.println (e.getMessage());
+    }
 	}
 
 	public static void AddTechnician(DBproject esql) {//4
 	}
 
 	public static void BookFlight(DBproject esql) {//5
-		// Given a customer and a flight that he/she wants to book, add a reservation to the DB
+		try{
+       String query = "INSERT INTO Reservation(cid, fid) VALUES (";
+       String input = "";
+
+       System.out.print("\tEnter cid: ");
+       input = in.readLine();
+       query += input + ", ";
+       System.out.print("\tEnter fid: ");
+       input = in.readLine();
+       query += input + ");";
+
+       esql.executeUpdate(query);
+    }catch(Exception e){
+       System.err.println (e.getMessage());
+    }
 	}
 
 	public static void ListNumberOfAvailableSeats(DBproject esql) {//6
@@ -343,6 +375,12 @@ public class DBproject{
 
 	public static void ListsTotalNumberOfRepairsPerPlane(DBproject esql) {//7
 		// Count number of repairs per planes and list them in descending order
+		try{
+       String query = "SELECT plane_id, COUNT(*) AS repairs FROM Repairs GROUP BY plane_id ORDER BY repairs DESC;";
+       esql.executeQueryAndPrintResult(query);
+    }catch(Exception e){
+       System.err.println (e.getMessage());
+    }
 	}
 
 	public static void ListTotalNumberOfRepairsPerYear(DBproject esql) {//8
@@ -351,5 +389,16 @@ public class DBproject{
 	
 	public static void FindPassengersCountWithStatus(DBproject esql) {//9
 		// Find how many passengers there are with a status (i.e. W,C,R) and list that number.
+		try{
+       String query = "SELECT COUNT(*) FROM Customer, Reservation WHERE Reservation.cid = Customer.id AND Reservation.status = ";
+       
+       System.out.print("\tEnter status: ");
+       String input = in.readLine();
+       query += "'" + input + "';";
+       
+       esql.executeQueryAndPrintResult(query);
+    }catch(Exception e){
+       System.err.println (e.getMessage());
+    }
 	}
 }
