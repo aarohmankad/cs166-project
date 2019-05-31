@@ -365,15 +365,12 @@ public class DBproject{
 
 	public static void AddTechnician(DBproject esql) {//4
 		try{
-       String query = "INSERT INTO Plane(id, full_name) VALUES (";
+       String query = "INSERT INTO Technician(full_name) VALUES (";
        String input = "";
 
-       System.out.print("\tEnter id: ");
-       input = in.readLine();
-       query += input + ", ";
        System.out.print("\tEnter full_name: ");
        input = in.readLine();
-       query += input + ");";
+       query += "'" + input + "');";
 
        esql.executeUpdate(query);
     }catch(Exception e){

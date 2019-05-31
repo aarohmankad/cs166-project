@@ -47,6 +47,13 @@ CREATE OR REPLACE FUNCTION PopulatePilotID() RETURNS TRIGGER AS $$
    END;
 $$ LANGUAGE 'plpgsql';
 
+CREATE OR REPLACE FUNCTION PopulateTechnicianID() RETURNS TRIGGER AS $$
+   BEGIN
+      NEW.id := nextval('technician_id');
+      RETURN NEW;
+   END;
+$$ LANGUAGE 'plpgsql';
+
 -------------
 --TRIGGERS---
 -------------
@@ -69,3 +76,8 @@ CREATE TRIGGER populate_pilot_id
 BEFORE INSERT ON Pilot
 FOR EACH ROW
 EXECUTE PROCEDURE PopulatePilotID();
+
+CREATE TRIGGER populate_technician_id
+BEFORE INSERT ON Technician
+FOR EACH ROW
+EXECUTE PROCEDURE PopulateTechnicianID();

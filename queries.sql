@@ -41,4 +41,4 @@
 -- FROM Customer, Reservation
 -- WHERE Reservation.cid = Customer.id AND Reservation.status = 'W';
 
-SELECT * FROM Pilot
+SELECT * FROM Technician
