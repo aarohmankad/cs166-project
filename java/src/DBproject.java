@@ -96,7 +96,8 @@ public class DBproject{
 		
 		//iterates through the result set and output them to standard out.
 		boolean outputHeader = true;
-		while (rs.next()){
+		System.out.println ();
+    while (rs.next()){
 			if(outputHeader){
 				for(int i = 1; i <= numCol; i++){
 					System.out.print(rsmd.getColumnName(i) + "\t");
@@ -110,6 +111,7 @@ public class DBproject{
 			++rowCount;
 		}//end while
 		stmt.close ();
+    System.out.println ();
 		return rowCount;
 	}
 	
@@ -399,7 +401,11 @@ public class DBproject{
 	public static void ListNumberOfAvailableSeats(DBproject esql) {//6
 		// For flight number and date, find the number of availalbe seats (i.e. total plane capacity minus booked seats )
 		try{
-       String query = "SELECT P.seats - F.num_sold FROM Plane P, Flight F, FlightInfo FI WHERE FI.flight_id=F.fnum AND FI.plane_id=P.id GROUP BY P.seats";
+       String query = "SELECT (P.seats - F.num_sold) AS available_seats FROM Plane P, Flight F, FlightInfo FI WHERE FI.flight_id=F.fnum AND FI.plane_id=P.id AND F.fnum=";
+
+       System.out.print("\tEnter flight number: ");
+       String input = in.readLine();
+       query += input + " GROUP BY P.seats, F.num_sold";
        esql.executeQueryAndPrintResult(query);
     }catch(Exception e){
        System.err.println (e.getMessage());
