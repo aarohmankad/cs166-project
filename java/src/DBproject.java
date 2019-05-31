@@ -325,18 +325,15 @@ public class DBproject{
 
 	public static void AddPilot(DBproject esql) {//2
 		try{
-       String query = "INSERT INTO Plane(id, fullname, nationality) VALUES (";
+       String query = "INSERT INTO Pilot(fullname, nationality) VALUES (";
        String input = "";
 
-       System.out.print("\tEnter id: ");
-       input = in.readLine();
-       query += input + ", ";
        System.out.print("\tEnter fullname: ");
        input = in.readLine();
        query += "'" + input + "', ";
        System.out.print("\tEnter nationality: ");
        input = in.readLine();
-       query += input + ");";
+       query += "'" + input + "');";
 
        esql.executeUpdate(query);
     }catch(Exception e){

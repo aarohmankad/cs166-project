@@ -40,6 +40,13 @@ CREATE OR REPLACE FUNCTION PopulateReservation() RETURNS TRIGGER AS $$
    END;
 $$ LANGUAGE 'plpgsql';
 
+CREATE OR REPLACE FUNCTION PopulatePilotID() RETURNS TRIGGER AS $$
+   BEGIN
+      NEW.id := nextval('pilot_id');
+      RETURN NEW;
+   END;
+$$ LANGUAGE 'plpgsql';
+
 -------------
 --TRIGGERS---
 -------------
@@ -57,3 +64,8 @@ CREATE TRIGGER populate_reservation
 BEFORE INSERT ON Reservation
 FOR EACH ROW
 EXECUTE PROCEDURE PopulateReservation();
+
+CREATE TRIGGER populate_pilot_id
+BEFORE INSERT ON Pilot
+FOR EACH ROW
+EXECUTE PROCEDURE PopulatePilotID();
