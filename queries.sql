@@ -31,14 +31,14 @@
 -- ORDER BY repairs DESC
 
 -- List total # of repairs/year in ascending order (Benny)
--- SELECT repair_date, COUNT(*) as repairs_year
+-- SELECT EXTRACT(YEAR FROM repair_date) as year, COUNT(*) as repairs
 -- FROM Repairs
--- GROUP BY repair_date
--- ORDER BY repairs_year ASC
+-- GROUP BY EXTRACT(YEAR FROM repair_date)
+-- ORDER BY COUNT(*) ASC;
 
 -- Find total # of passengers with a given status (Aaroh)
 -- SELECT COUNT(*)
 -- FROM Customer, Reservation
 -- WHERE Reservation.cid = Customer.id AND Reservation.status = 'W';
 
-SELECT * FROM Technician
+-- SELECT * FROM Technician

@@ -419,7 +419,7 @@ public class DBproject{
 	public static void ListTotalNumberOfRepairsPerYear(DBproject esql) {//8
 		// Count repairs per year and list them in ascending order
 		try{
-       String query = "SELECT repair_date, COUNT(*) as repairs_year FROM Repairs GROUP BY repair_date ORDER BY repairs_year ASC;";
+       String query = "SELECT EXTRACT(YEAR FROM repair_date) as year, COUNT(*) as repairs FROM Repairs GROUP BY EXTRACT(YEAR FROM repair_date) ORDER BY COUNT(*) ASC";
        esql.executeQueryAndPrintResult(query);
     }catch(Exception e){
        System.err.println (e.getMessage());
